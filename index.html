@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0e14">
+<title>WoGL Studio · Brand Identity para apps & extensions</title>
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  WoGL Studio — Marco completo
+  Por: Magazín · Mayo 2026
+  Para: Equipo WoGL — sistema integrado de venta de servicios
+
+  Tres secciones que viven juntas:
+    1. CASE STUDY (Darkmode Sketch) — showcase público, soft launch
+    2. PACKAGES — productized services con pricing tiers
+    3. PITCH — sales deck para discovery calls
+
+  Todo navegable con anchor links. Estilo handwritten WoGL.
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-deep: #0a0e14;
+    --bg-canvas: #0d1118;
+    --border-soft: rgba(120, 190, 255, 0.10);
+    --border-medium: rgba(120, 190, 255, 0.20);
+    --grid: rgba(120, 190, 255, 0.06);
+
+    --text-primary: rgba(245, 232, 212, 0.85);
+    --text-faint: rgba(245, 232, 212, 0.55);
+    --text-faintest: rgba(245, 232, 212, 0.30);
+
+    --ink-cyan: #78beff;
+    --ink-warm: #ff9070;
+    --ink-pink: #ffb8c8;
+    --ink-yellow: #ffd870;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── Sticky nav ─── */
+  nav.studio-nav {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(10, 14, 20, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 16px 20px;
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+  }
+  nav.studio-nav a {
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-faint);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  nav.studio-nav a:hover { color: var(--ink-cyan); }
+  nav.studio-nav a.active { color: var(--ink-cyan); text-shadow: 0 0 8px rgba(120, 190, 255, 0.4); }
+
+  /* ─── Section base ─── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+  section.full { max-width: 100%; }
+
+  /* ─── Headings ─── */
+  .h1 {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: clamp(56px, 10vw, 120px);
+    line-height: 0.9;
+    color: var(--ink-cyan);
+    text-shadow: 0 0 24px rgba(120, 190, 255, 0.4), 0 0 48px rgba(120, 190, 255, 0.2);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .h1 .alt { color: var(--ink-warm); text-shadow: 0 0 24px rgba(255, 144, 112, 0.4); }
+
+  .h2 {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    margin-bottom: 16px;
+    color: var(--ink-cyan);
+    text-shadow: 0 0 16px rgba(120, 190, 255, 0.4);
+  }
+  .h2.warm { color: var(--ink-warm); text-shadow: 0 0 16px rgba(255, 144, 112, 0.4); }
+
+  .h3 {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.1;
+    color: var(--ink-cyan);
+    text-shadow: 0 0 12px rgba(120, 190, 255, 0.3);
+    margin-bottom: 14px;
+  }
+  .h3.warm { color: var(--ink-warm); text-shadow: 0 0 12px rgba(255, 144, 112, 0.3); }
+
+  .lead {
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--text-faint);
+    max-width: 800px;
+    margin-bottom: 40px;
+  }
+  .lead em { font-style: normal; color: var(--ink-yellow); text-shadow: 0 0 8px rgba(255, 216, 112, 0.3); }
+
+  p { color: var(--text-primary); font-size: 16px; line-height: 1.7; margin-bottom: 16px; max-width: 760px; }
+  p strong { color: var(--ink-cyan); font-weight: 400; }
+  p em.warm { font-style: normal; color: var(--ink-warm); }
+  p em.yellow { font-style: normal; color: var(--ink-yellow); }
+
+  /* ─── Hero ─── */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--text-faintest);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .hero-meta span { color: var(--ink-cyan); }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    border: 1.5px solid var(--ink-cyan);
+    color: var(--ink-cyan);
+    background: transparent;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: rgba(120, 190, 255, 0.08);
+    box-shadow: 0 0 20px rgba(120, 190, 255, 0.2);
+    transform: translateY(-1px);
+  }
+  .btn.primary {
+    background: var(--ink-cyan);
+    color: var(--bg-deep);
+  }
+  .btn.primary:hover { background: #a8d4ff; }
+  .btn.warm {
+    border-color: var(--ink-warm);
+    color: var(--ink-warm);
+  }
+  .btn.warm:hover { background: rgba(255, 144, 112, 0.08); box-shadow: 0 0 20px rgba(255, 144, 112, 0.2); }
+
+  /* ─── Section divider (handwritten section number) ─── */
+  .section-num {
+    font-family: 'Caveat', cursive;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--ink-warm);
+    text-shadow: 0 0 8px rgba(255, 144, 112, 0.3);
+    margin-bottom: 8px;
+  }
+
+  /* ─── Before/After (Darkmode case study) ─── */
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px 0;
+  }
+  .ba-block {
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 32px 28px;
+    background: rgba(15, 19, 26, 0.4);
+  }
+  .ba-block.before { opacity: 0.7; }
+  .ba-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ba-tag.before { color: var(--text-faintest); }
+  .ba-tag.after { color: var(--ink-cyan); }
+  .ba-content {
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--text-faint);
+    line-height: 1.7;
+  }
+  .ba-content em.warm { font-style: normal; color: var(--ink-warm); }
+  .ba-content strong { color: var(--ink-cyan); font-weight: 400; }
+
+  /* ─── Stats / metrics ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 50px 0;
+  }
+  .stat {
+    text-align: center;
+    padding: 30px 20px;
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    background: rgba(15, 19, 26, 0.4);
+  }
+  .stat-num {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-num.cyan { color: var(--ink-cyan); text-shadow: 0 0 16px rgba(120, 190, 255, 0.4); }
+  .stat-num.warm { color: var(--ink-warm); text-shadow: 0 0 16px rgba(255, 144, 112, 0.4); }
+  .stat-num.yellow { color: var(--ink-yellow); text-shadow: 0 0 16px rgba(255, 216, 112, 0.4); }
+  .stat-label {
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--text-faint);
+    line-height: 1.4;
+  }
+
+  /* ─── Deliverables grid ─── */
+  .deliv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .deliv {
+    padding: 18px 22px;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    background: rgba(15, 19, 26, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .deliv-icon {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--ink-warm);
+    width: 32px;
+    flex-shrink: 0;
+  }
+  .deliv-text {
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  /* ─── Pricing tiers ─── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 50px 0;
+  }
+  .tier {
+    padding: 36px 32px;
+    border: 1.5px solid var(--border-soft);
+    border-radius: 16px;
+    background: rgba(15, 19, 26, 0.5);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .tier:hover { border-color: var(--border-medium); transform: translateY(-3px); }
+  .tier.featured {
+    border-color: var(--ink-cyan);
+    box-shadow: 0 0 40px rgba(120, 190, 255, 0.15);
+    transform: scale(1.03);
+  }
+  .tier.featured:hover { transform: scale(1.03) translateY(-3px); }
+  .tier-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-faintest);
+    margin-bottom: 10px;
+  }
+  .tier.featured .tier-tag { color: var(--ink-cyan); }
+  .tier-name {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .tier-name.warm { color: var(--ink-warm); text-shadow: 0 0 12px rgba(255, 144, 112, 0.3); }
+  .tier-name.cyan { color: var(--ink-cyan); text-shadow: 0 0 12px rgba(120, 190, 255, 0.3); }
+  .tier-name.yellow { color: var(--ink-yellow); text-shadow: 0 0 12px rgba(255, 216, 112, 0.3); }
+  .tier-tagline {
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    font-size: 15px;
+    color: var(--text-faint);
+    margin-bottom: 24px;
+    min-height: 42px;
+  }
+  .tier-price {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .tier-price .currency { font-size: 32px; vertical-align: top; opacity: 0.7; }
+  .tier-price-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-faintest);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .tier-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    flex: 1;
+  }
+  .tier-features li {
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+  }
+  .tier-features li:last-child { border-bottom: none; }
+  .tier-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--ink-cyan);
+    font-weight: 700;
+  }
+  .tier-features li.no::before { content: '·'; color: var(--text-faintest); }
+  .tier-features li.no { color: var(--text-faintest); }
+  .tier-cta {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 100px;
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: 1.5px solid var(--ink-cyan);
+    color: var(--ink-cyan);
+  }
+  .tier-cta:hover { background: rgba(120, 190, 255, 0.08); }
+  .tier.featured .tier-cta {
+    background: var(--ink-cyan);
+    color: var(--bg-deep);
+  }
+  .tier.featured .tier-cta:hover { background: #a8d4ff; }
+
+  /* ─── Process timeline ─── */
+  .timeline {
+    margin: 40px 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border-soft);
+  }
+  .step {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink-cyan);
+    background: var(--bg-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--ink-cyan);
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 0 16px rgba(120, 190, 255, 0.2);
+  }
+  .step-content { flex: 1; padding-top: 4px; }
+  .step-title {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--ink-cyan);
+    margin-bottom: 4px;
+    line-height: 1.1;
+  }
+  .step-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--text-faintest);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--text-faint);
+    line-height: 1.6;
+    max-width: 700px;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-item {
+    border-bottom: 1px solid var(--border-soft);
+    padding: 22px 0;
+  }
+  .faq-q {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--ink-cyan);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .faq-a {
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--text-faint);
+    line-height: 1.6;
+    max-width: 760px;
+  }
+
+  /* ─── Pitch deck slides (3-column for compact view) ─── */
+  .pitch-slides {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 40px 0;
+  }
+  .slide {
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 36px 32px;
+    background: rgba(15, 19, 26, 0.5);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+  }
+  .slide-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--text-faintest);
+    margin-bottom: 14px;
+  }
+  .slide-title {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1;
+    margin-bottom: 18px;
+  }
+  .slide-title.cyan { color: var(--ink-cyan); text-shadow: 0 0 12px rgba(120, 190, 255, 0.3); }
+  .slide-title.warm { color: var(--ink-warm); text-shadow: 0 0 12px rgba(255, 144, 112, 0.3); }
+  .slide-body {
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .slide-body strong { color: var(--ink-cyan); font-weight: 400; }
+  .slide-body em.warm { font-style: normal; color: var(--ink-warm); }
+
+  /* ─── Footer ─── */
+  footer {
+    border-top: 1px solid var(--border-soft);
+    padding: 60px 40px 40px;
+    text-align: center;
+    margin-top: 80px;
+  }
+  footer .h2 { margin-bottom: 20px; }
+  footer .ft-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faintest);
+    margin-top: 40px;
+    line-height: 2;
+  }
+  footer a {
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--ink-cyan); }
+
+  /* ─── Sparkle decorations ─── */
+  .sparkle {
+    position: absolute;
+    pointer-events: none;
+  }
+  .sparkle path {
+    stroke: var(--ink-yellow);
+    stroke-width: 2;
+    stroke-linecap: round;
+    fill: none;
+    filter: drop-shadow(0 0 4px rgba(255, 216, 112, 0.5));
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pitch-slides { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr; }
+    .before-after { grid-template-columns: 1fr; }
+    .deliv-grid { grid-template-columns: 1fr; }
+    .tier.featured { transform: none; }
+    .tier.featured:hover { transform: translateY(-3px); }
+    nav.studio-nav { display: none; }
+    section { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+
+<!-- ─── STICKY NAV ─── -->
+<nav class="studio-nav">
+  <a href="#case">caso · darkmode</a>
+  <a href="#packages">paquetes</a>
+  <a href="#process">proceso</a>
+  <a href="#pitch">pitch</a>
+  <a href="#contact">contacto</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="hero">
+
+  <div class="hero-meta">
+    <span>WoGL Studio</span> · brand identity · apps & extensions
+  </div>
+
+  <div class="h1">
+    construimos identidades<br>
+    para apps que <span class="alt">se sienten</span>
+  </div>
+
+  <p class="lead">
+    no diseñamos logos. <em>diseñamos cómo se siente tu producto cuando lo usan.</em>
+    sistemas completos — voz, paleta, tipografía, screenshots, marquesinas — listos para chrome web store, app store, landing.
+  </p>
+
+  <div class="hero-cta">
+    <a href="#case" class="btn primary">ver caso de estudio</a>
+    <a href="#packages" class="btn warm">ver paquetes</a>
+  </div>
+
+  <!-- Sparkle decorations -->
+  <svg class="sparkle" style="right: 80px; top: 120px; width: 24px; height: 24px;">
+    <path d="M 12 0 L 12 24 M 0 12 L 24 12"/>
+  </svg>
+  <svg class="sparkle" style="right: 200px; bottom: 200px; width: 18px; height: 18px;">
+    <path d="M 9 0 L 9 18 M 0 9 L 18 9"/>
+  </svg>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CASE STUDY — DARKMODE SKETCH
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="case">
+
+  <div class="section-num">— caso de estudio —</div>
+  <div class="h2 warm">darkmode sketch</div>
+  <p class="lead">
+    una chrome extension que <em>nació como herramienta interna</em>. la convertimos en una marca con voz propia, screenshots que demuestran en uso, y un asset sheet completo para chrome web store.
+  </p>
+
+  <div class="before-after">
+
+    <div class="ba-block before">
+      <div class="ba-tag before">— antes —</div>
+      <div class="ba-content">
+        screenshots literales del producto. wordmark genérico. copy de feature checklist. <em class="warm">"premium dark mode experience"</em>. la extension funcionaba bonito pero la marca no contaba la historia del producto. <strong>conversión Chrome Store baja, sin diferenciación clara.</strong>
+      </div>
+    </div>
+
+    <div class="ba-block">
+      <div class="ba-tag after">— después —</div>
+      <div class="ba-content">
+        sistema cromático de cuatro inks con función específica. tres tipografías con rol claro. screenshots como historias narrativas. voz en primera persona del usuario. <strong>marquesina, promo small, 5 screenshots de chrome store, brand book replicable, asset sheet.</strong> la marca se siente como alguien dibujando en darkmode sketch.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num cyan">14</div>
+      <div class="stat-label">assets entregados<br>chrome web store ready</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num warm">4</div>
+      <div class="stat-label">inks documentados<br>cada uno con función</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num yellow">∞</div>
+      <div class="stat-label">replicable por el equipo<br>sin volver al studio</div>
+    </div>
+  </div>
+
+  <div class="h3">qué entregamos exactamente</div>
+  <div class="deliv-grid">
+    <div class="deliv"><div class="deliv-icon">01</div><div class="deliv-text">brand book completo · 11 capítulos</div></div>
+    <div class="deliv"><div class="deliv-icon">02</div><div class="deliv-text">favicons 16/32/48/128px</div></div>
+    <div class="deliv"><div class="deliv-icon">03</div><div class="deliv-text">3 lockups del logo · wordmark, square, compact</div></div>
+    <div class="deliv"><div class="deliv-icon">04</div><div class="deliv-text">marquesina chrome store · 1400×560</div></div>
+    <div class="deliv"><div class="deliv-icon">05</div><div class="deliv-text">promo pequeña · 440×280</div></div>
+    <div class="deliv"><div class="deliv-icon">06</div><div class="deliv-text">5 screenshots · 1280×800 · narrativos</div></div>
+    <div class="deliv"><div class="deliv-icon">07</div><div class="deliv-text">guía de voz · español + inglés</div></div>
+    <div class="deliv"><div class="deliv-icon">08</div><div class="deliv-text">asset sheet · listo para screenshot directo</div></div>
+  </div>
+
+  <p style="margin-top: 40px; font-family: 'Kalam', cursive; font-size: 18px; color: var(--ink-yellow); text-shadow: 0 0 8px rgba(255, 216, 112, 0.3);">
+    <em>todo entregado en 3 semanas · revisiones limitadas · scope cerrado · sin sorpresas en factura.</em>
+  </p>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PACKAGES — PRODUCTIZED SERVICES
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="packages">
+
+  <div class="section-num">— paquetes —</div>
+  <div class="h2">tres tamaños · scope cerrado</div>
+  <p class="lead">
+    cada paquete es <em>scope fijo, precio fijo, timeline fijo</em>. sin scope creep, sin sorpresas. si necesitas más, contratás el siguiente paquete o lo cotizamos por separado.
+  </p>
+
+  <div class="pricing-grid">
+
+    <!-- Tier 1: Sketch -->
+    <div class="tier">
+      <div class="tier-tag">— para validar —</div>
+      <div class="tier-name warm">sketch</div>
+      <div class="tier-tagline">marca esencial para apps en early stage o MVP</div>
+      <div class="tier-price"><span class="currency">$</span>1,500</div>
+      <div class="tier-price-note">USD · 2 semanas · una revisión</div>
+
+      <ul class="tier-features">
+        <li>logo principal · 1 lockup</li>
+        <li>paleta cromática · 3 colores</li>
+        <li>1 tipografía documentada</li>
+        <li>guía de voz · 1 idioma</li>
+        <li>3 screenshots para store</li>
+        <li>1 marquesina o promo image</li>
+        <li class="no">brand book completo</li>
+        <li class="no">asset sheet replicable</li>
+      </ul>
+
+      <a href="#contact" class="tier-cta">empezamos sketch</a>
+    </div>
+
+    <!-- Tier 2: Studio (featured) -->
+    <div class="tier featured">
+      <div class="tier-tag">— recomendado —</div>
+      <div class="tier-name cyan">studio</div>
+      <div class="tier-tagline">identidad completa para apps que están listas para crecer</div>
+      <div class="tier-price"><span class="currency">$</span>4,500</div>
+      <div class="tier-price-note">USD · 3 semanas · dos revisiones</div>
+
+      <ul class="tier-features">
+        <li>3 lockups del logo · variantes</li>
+        <li>paleta cromática completa · roles definidos</li>
+        <li>sistema tipográfico · 3 tipografías</li>
+        <li>guía de voz · 2 idiomas</li>
+        <li>5 screenshots narrativos</li>
+        <li>marquesina + promo small</li>
+        <li>brand book completo</li>
+        <li>asset sheet replicable</li>
+      </ul>
+
+      <a href="#contact" class="tier-cta">empezamos studio</a>
+    </div>
+
+    <!-- Tier 3: Atelier -->
+    <div class="tier">
+      <div class="tier-tag">— el sistema completo —</div>
+      <div class="tier-name yellow">atelier</div>
+      <div class="tier-tagline">identidad + estrategia + materiales lanzamiento</div>
+      <div class="tier-price"><span class="currency">$</span>9,500</div>
+      <div class="tier-price-note">USD · 5 semanas · revisiones ilimitadas</div>
+
+      <ul class="tier-features">
+        <li>todo lo del paquete studio</li>
+        <li>landing page diseñada</li>
+        <li>10 screenshots narrativos</li>
+        <li>set de iconografía custom · 12 iconos</li>
+        <li>email templates · 3 plantillas</li>
+        <li>copy completo store · es + en</li>
+        <li>brand book + asset sheet</li>
+        <li>onboarding session 90min para tu equipo</li>
+      </ul>
+
+      <a href="#contact" class="tier-cta">empezamos atelier</a>
+    </div>
+
+  </div>
+
+  <p style="margin-top: 40px; text-align: center; font-family: 'Kalam', cursive; font-size: 16px; color: var(--text-faint);">
+    ¿ tu app no encaja en ningún paquete ? <a href="#contact" style="color: var(--ink-cyan); text-decoration: none; border-bottom: 1px solid currentColor;">cotizamos custom</a> · respuesta en 48h.
+  </p>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PROCESS
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="process">
+
+  <div class="section-num">— proceso —</div>
+  <div class="h2 warm">cómo trabajamos</div>
+  <p class="lead">
+    <em>sin agency bs.</em> directo, claro, predecible. vos sabés qué llega cuándo desde el día uno.
+  </p>
+
+  <div class="timeline">
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <div class="step-title">discovery call</div>
+        <div class="step-time">— día 0 · 45 min ·  gratis —</div>
+        <div class="step-desc">
+          conversamos sobre tu app, tu user, tu ambición. te decimos honestamente si somos el match correcto. si no lo somos, te recomendamos quién sí.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <div class="step-title">brief escrito</div>
+        <div class="step-time">— días 1-2 ·  asíncrono —</div>
+        <div class="step-desc">
+          te mandamos un brief escrito con todo lo que entendimos. tú confirmas o ajustas. ese brief es el contrato funcional.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <div class="step-title">primera entrega</div>
+        <div class="step-time">— semana 1 fin —</div>
+        <div class="step-desc">
+          dirección visual y voz. paleta tentativa. wordmark draft. esto NO es la entrega final — es el momento de pivotear si algo no encaja.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <div class="step-title">iteración</div>
+        <div class="step-time">— semana 2 —</div>
+        <div class="step-desc">
+          basado en tu feedback, refinamos. screenshots primarios, brand book, asset sheet en construcción. tú ves el WIP, comentas, seguimos.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-content">
+        <div class="step-title">entrega final</div>
+        <div class="step-time">— semana 3 —</div>
+        <div class="step-desc">
+          todos los assets a las dimensiones exactas. brand book completo. asset sheet listo para tu equipo screenshotear. handover call de 30 min para que sepas usar todo.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PITCH DECK SECTION
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="pitch">
+
+  <div class="section-num">— pitch resumen —</div>
+  <div class="h2">por qué WoGL Studio</div>
+  <p class="lead">
+    los seis puntos que importan. <em>sin slides agency vacíos.</em>
+  </p>
+
+  <div class="pitch-slides">
+
+    <div class="slide">
+      <div class="slide-num">01 / 06</div>
+      <div class="slide-title cyan">no somos agency</div>
+      <div class="slide-body">
+        somos <strong>operadores</strong>. construimos productos propios (darkmode sketch, glue filter, herramientas WoGL Academy). cuando trabajamos en tu marca, sabemos qué pasa después de la entrega — porque también nos pasa a nosotros.
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-num">02 / 06</div>
+      <div class="slide-title warm">scope cerrado · siempre</div>
+      <div class="slide-body">
+        precios fijos. timelines fijos. revisiones contadas. <em class="warm">cero scope creep, cero "esto es extra".</em> si necesitas algo fuera del paquete, te lo decimos antes de empezar y lo cotizamos aparte.
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-num">03 / 06</div>
+      <div class="slide-title cyan">replicable sin nosotros</div>
+      <div class="slide-body">
+        cada entrega incluye un <strong>brand book + asset sheet</strong> diseñado para que tu equipo pueda generar más material en el mismo lenguaje sin volver a contratarnos. <em class="warm">no te encerramos como cliente.</em>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-num">04 / 06</div>
+      <div class="slide-title warm">narrativa · no checklist</div>
+      <div class="slide-body">
+        nuestros screenshots cuentan <strong>historias del usuario usando tu producto</strong>, no muestran features con flechas. eso convierte mejor en chrome store, app store, y product hunt — porque humans don't read feature lists, sienten historias.
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-num">05 / 06</div>
+      <div class="slide-title cyan">honestidad sobre el match</div>
+      <div class="slide-body">
+        si tu producto necesita branding super corporativo serio (banking, enterprise SaaS, legal-tech), <strong>no somos los correctos</strong>. te lo decimos en discovery call. vivimos donde hay alma, juego, expresión.
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-num">06 / 06</div>
+      <div class="slide-title warm">una causa detrás del precio</div>
+      <div class="slide-body">
+        WoGL Studio fondea <strong>WoGL Academy</strong> — educación gratuita en arte generativo / GLSL / shaders. cuando contratas, una parte directa va a sostener piezas, tutoriales y herramientas que se entregan gratis al mundo. <em class="warm">tu inversión multiplica.</em>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════════════════════════════ -->
+<section>
+
+  <div class="section-num">— preguntas frecuentes —</div>
+  <div class="h2 warm">lo que casi siempre preguntan</div>
+
+  <div style="margin-top: 40px;">
+
+    <div class="faq-item">
+      <div class="faq-q">¿pueden trabajar en otros idiomas que no sean español o inglés?</div>
+      <div class="faq-a">sí, pero la voz la calibramos juntos en discovery. trabajamos en es, en, pt. otros idiomas: cotización custom.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿qué pasa si mi app cambia mid-project?</div>
+      <div class="faq-a">si el cambio es menor (color preference, copy tweak), entra en revisiones. si es estructural (nueva funcionalidad principal, pivote de target), pausamos y re-cotizamos. honestidad mutua.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿dan garantía de conversión en chrome web store?</div>
+      <div class="faq-a">no. nadie debería darla — depende de tu producto, tu marketing, tu pricing, tu user base. damos garantía de calidad de assets, replicabilidad del sistema, y respuesta a feedback.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿cuál es el plazo más rápido posible?</div>
+      <div class="faq-a">paquete sketch comprimido a 10 días con un 30% rush fee. no aceptamos rush en studio o atelier — el proceso necesita su tiempo para entregar tier S.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿pueden firmar NDA?</div>
+      <div class="faq-a">sí, NDA mutuo si tu producto está pre-launch o tiene ventaja competitiva sensible. cero problema.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿cuánto del precio va a WoGL Academy?</div>
+      <div class="faq-a">un porcentaje fijo de cada proyecto se reinvierte directamente en producir contenido educativo gratuito. exacto: 25% del net después de costos. publicamos transparencia anual de hacia dónde fue.</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONTACT FOOTER
+     ═══════════════════════════════════════════════════════════════ -->
+<footer id="contact">
+
+  <div class="h2">empezamos por una conversación</div>
+  <p class="lead" style="text-align: center; margin: 20px auto 32px;">
+    discovery call <em>gratis</em> · 45 minutos · cero compromiso. te decimos honestamente si somos el match.
+  </p>
+
+  <div class="hero-cta" style="justify-content: center;">
+    <a href="mailto:hello@wogl.studio?subject=discovery%20call" class="btn primary">agendar discovery</a>
+    <a href="mailto:hola@wogl.studio?subject=consulta" class="btn warm">consulta directa</a>
+  </div>
+
+  <div class="ft-meta">
+    wogl studio · brand identity para apps & extensions<br>
+    fondea wogl academy · educación gratuita en arte generativo<br><br>
+    <a href="https://wogl.io">wogl.io</a> · <a href="https://worldofgl.com">worldofgl.com</a> · <a href="https://mundogl.com">mundogl.com</a>
+  </div>
+
+</footer>
+
+
+<!-- ─── Active nav highlighting ─── -->
+<script>
+(() => {
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('nav.studio-nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -40% 0px' });
+
+  sections.forEach(section => observer.observe(section));
+})();
+</script>
+
+</body>
+</html>
